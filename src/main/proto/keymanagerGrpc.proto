@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.br.zup";
+option java_outer_classname = "RegisterKeyOuterClass";
+option objc_class_prefix = "HLW";
+
+package com.br.zup;
+
+service ProtoRegisterKeyService {
+  rpc registerKey (ProtoRegisterKeyRequest) returns (ProtoRegisterKeyResponse) {}
+}
+
+enum ProtoKeyType {
+  UNKNOWN_KEY_TYPE = 0;
+  CPF = 1;
+  CELL_PHONE = 2;
+  EMAIL = 3;
+  RANDOM_KEY = 4;
+}
+
+enum ProtoAccountType {
+  UNKNOWN_ACCOUNT_TYPE = 0;
+  SAVINGS_ACCOUNT = 1;
+  CHECKING_ACCOUNT = 2;
+}
+
+message ProtoRegisterKeyRequest {
+  string clientId = 1;
+  ProtoKeyType keyType = 2;
+  string keyValue = 3;
+  ProtoAccountType accountType = 4;
+}
+
+message ProtoRegisterKeyResponse {
+  string pixId = 1;
+}
