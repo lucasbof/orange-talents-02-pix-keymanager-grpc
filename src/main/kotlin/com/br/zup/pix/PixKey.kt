@@ -14,7 +14,7 @@ import javax.validation.constraints.Size
 @Table(name = "tb_pix_key")
 class PixKey(
 
-        @field:NotBlank
+        @field:NotNull
         @Column(nullable = false)
         val clientId: UUID,
 

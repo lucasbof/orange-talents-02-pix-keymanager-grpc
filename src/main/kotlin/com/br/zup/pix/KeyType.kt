@@ -25,7 +25,7 @@ enum class KeyType {
             if(key.isNullOrBlank()) {
                 return false
             }
-            return key.matches("^\\\\+[1-9][0-9]\\\\d{1,14}\\\$".toRegex())
+            return key.matches("^\\+[1-9][0-9]\\d{1,14}\$".toRegex())
         }
     },
     EMAIL {

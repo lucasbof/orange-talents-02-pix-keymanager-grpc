@@ -1,4 +1,4 @@
-package com.br.zup
+ package com.br.zup
 
 import io.micronaut.runtime.Micronaut.*
 fun main(args: Array<String>) {
