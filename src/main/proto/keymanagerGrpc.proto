@@ -7,12 +7,18 @@ option objc_class_prefix = "HLW";
 
 package com.br.zup;
 
+import "google/protobuf/timestamp.proto";
+
 service ProtoRegisterKeyService {
   rpc registerKey (ProtoRegisterKeyRequest) returns (ProtoRegisterKeyResponse) {}
 }
 
 service ProtoRemoveKeyService {
   rpc removeKey (ProtoRemoveKeyRequest) returns (ProtoRemoveKeyResponse) {}
+}
+
+service ProtoQueryKeyService {
+  rpc queryKey (ProtoQueryKeyRequest) returns (ProtoQueryKeyResponse) {}
 }
 
 enum ProtoKeyType {
@@ -48,4 +54,38 @@ message ProtoRemoveKeyRequest {
 message ProtoRemoveKeyResponse {
   string clientId = 1;
   string pixId = 2;
+}
+
+message ProtoQueryKeyRequest {
+  message ProtoPixIdClientId {
+    string clientId = 1;
+    string pixId = 2;
+  }
+
+  oneof ProtoQueryFilter {
+    ProtoPixIdClientId pixId = 1;
+    string key = 2;
+  }
+}
+
+message ProtoQueryKeyResponse {
+  message ProtoQueryPixKey {
+    message ProtoQueryAccountInfo {
+      ProtoAccountType type = 1;
+      string institution = 2;
+      string holderName = 3;
+      string cpfHolder = 4;
+      string agency = 5;
+      string accountNumber = 6;
+    }
+
+    ProtoKeyType type = 1;
+    string key = 2;
+    ProtoQueryAccountInfo account = 3;
+    google.protobuf.Timestamp createdAt = 4;
+  }
+
+  string clientId = 1;
+  string pixId = 2;
+  ProtoQueryPixKey pixKey = 3;
 }
