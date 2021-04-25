@@ -1,8 +1,8 @@
 package com.br.zup.pix.remove
 
-import com.br.zup.*
+import com.br.zup.ProtoRemoveKeyRequest
+import com.br.zup.ProtoRemoveKeyServiceGrpc
 import com.br.zup.pix.*
-import com.br.zup.pix.register.RegisterKeyEndpointTest
 import io.grpc.ManagedChannel
 import io.grpc.Status
 import io.grpc.StatusRuntimeException
