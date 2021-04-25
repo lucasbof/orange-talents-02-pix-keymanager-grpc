@@ -11,6 +11,10 @@ service ProtoRegisterKeyService {
   rpc registerKey (ProtoRegisterKeyRequest) returns (ProtoRegisterKeyResponse) {}
 }
 
+service ProtoRemoveKeyService {
+  rpc removeKey (ProtoRemoveKeyRequest) returns (ProtoRemoveKeyResponse) {}
+}
+
 enum ProtoKeyType {
   UNKNOWN_KEY_TYPE = 0;
   CPF = 1;
@@ -34,4 +38,14 @@ message ProtoRegisterKeyRequest {
 
 message ProtoRegisterKeyResponse {
   string pixId = 1;
+}
+
+message ProtoRemoveKeyRequest {
+  string clientId = 1;
+  string pixId = 2;
+}
+
+message ProtoRemoveKeyResponse {
+  string clientId = 1;
+  string pixId = 2;
 }

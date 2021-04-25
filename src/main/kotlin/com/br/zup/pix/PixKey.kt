@@ -3,6 +3,7 @@ package com.br.zup.pix
 import com.br.zup.pix.AccountType
 import com.br.zup.pix.AssociatedAccount
 import com.br.zup.pix.KeyType
+import org.hibernate.annotations.Type
 import java.time.LocalDateTime
 import java.util.*
 import javax.persistence.*
@@ -11,11 +12,12 @@ import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
 
 @Entity
-@Table(name = "tb_pix_key")
+@Table(name = "tb_pix_key", uniqueConstraints = [UniqueConstraint(name = "uk_pix_key", columnNames = ["key"])])
 class PixKey(
 
         @field:NotNull
         @Column(nullable = false)
+        @Type(type="uuid-char")
         val clientId: UUID,
 
         @field:NotNull
@@ -30,7 +32,7 @@ class PixKey(
 
         @field:NotBlank
         @field:Size(max = 77)
-        @Column(nullable = false, length = 77, name = "key", unique = true)
+        @Column(nullable = false, length = 77, unique = true)
         var key: String,
 
         @Embedded
@@ -38,6 +40,7 @@ class PixKey(
 ) {
     @Id
     @GeneratedValue
+    @Type(type="uuid-char")
     var id: UUID? = null
 
     @Column(nullable = false, updatable = false)

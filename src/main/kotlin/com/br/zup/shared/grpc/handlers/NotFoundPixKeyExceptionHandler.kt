@@ -1,21 +1,20 @@
 package com.br.zup.shared.grpc.handlers
 
-import com.br.zup.pix.ExistingPixKeyException
 import com.br.zup.pix.NotFoundPixKeyException
 import com.br.zup.shared.grpc.ExceptionHandler
 import io.grpc.Status
 import javax.inject.Singleton
 
 @Singleton
-class ExistingPixKeyExceptionHandler : ExceptionHandler<ExistingPixKeyException> {
-    override fun handle(e: ExistingPixKeyException): ExceptionHandler.StatusWithDetails {
-        return ExceptionHandler.StatusWithDetails(Status.ALREADY_EXISTS
+class NotFoundPixKeyExceptionHandler : ExceptionHandler<NotFoundPixKeyException> {
+    override fun handle(e: NotFoundPixKeyException): ExceptionHandler.StatusWithDetails {
+        return ExceptionHandler.StatusWithDetails(Status.NOT_FOUND
                 .withDescription(e.message)
                 .withCause(e))
     }
 
     override fun supports(e: Exception): Boolean {
-        return e is ExistingPixKeyException
+        return e is NotFoundPixKeyException
     }
 
 

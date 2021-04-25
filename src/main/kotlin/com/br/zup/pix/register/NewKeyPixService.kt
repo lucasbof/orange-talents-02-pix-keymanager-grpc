@@ -4,6 +4,7 @@ import com.br.zup.integration.bcb.CentralBankClient
 import com.br.zup.integration.bcb.createPixKey.CreatePixKeyRequest
 import com.br.zup.integration.itau.ItauCustomerAccountsClient
 import com.br.zup.pix.ExistingPixKeyException
+import com.br.zup.pix.NotFoundPixKeyException
 import com.br.zup.pix.PixKey
 import com.br.zup.pix.PixKeyRepository
 import io.micronaut.http.HttpStatus
