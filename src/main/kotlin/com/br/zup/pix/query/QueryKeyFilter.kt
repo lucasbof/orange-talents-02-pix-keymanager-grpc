@@ -54,7 +54,7 @@ sealed class QueryKeyFilter {
     @Introspected
     class Invalid() : QueryKeyFilter() {
         override fun filter(repository: PixKeyRepository, bcbClient: CentralBankClient): PixKeyInfo {
-            throw IllegalArgumentException("Chave Pix inválida ou não informada")
+            throw IllegalArgumentException("nem uma chave e nem uma combinacao de pixId e clientId foram informados")
         }
 
         override fun equals(other: Any?): Boolean {

@@ -12,6 +12,7 @@ import com.br.zup.integration.itau.InstitutionResponse
 import com.br.zup.integration.itau.ItauCustomerAccountsClient
 import com.br.zup.pix.*
 import com.br.zup.util.violations
+import com.google.protobuf.Timestamp
 import io.grpc.ManagedChannel
 import io.grpc.Status
 import io.grpc.StatusRuntimeException
@@ -30,6 +31,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.mockito.Mockito
 import java.time.LocalDateTime
+import java.time.ZoneId
 import java.util.*
 import javax.inject.Inject
 
