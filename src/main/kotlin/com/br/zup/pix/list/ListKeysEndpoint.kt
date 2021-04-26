@@ -17,10 +17,9 @@ class ListKeysEndpoint(
         request: ProtoListKeyRequest,
         responseObserver: StreamObserver<ProtoListKeyResponse>
     ) {
-        val keys = service.findKeys(request.clientId)
 
         responseObserver.onNext(ProtoListKeyResponse.newBuilder()
-            .addAllKeys(keys)
+            .addAllKeys(service.findKeys(request.clientId))
             .build())
 
         responseObserver.onCompleted()
