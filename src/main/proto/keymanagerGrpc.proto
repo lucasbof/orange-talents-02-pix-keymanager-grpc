@@ -21,6 +21,10 @@ service ProtoQueryKeyService {
   rpc queryKey (ProtoQueryKeyRequest) returns (ProtoQueryKeyResponse) {}
 }
 
+service ProtoListKeyService {
+  rpc listKeys (ProtoListKeyRequest) returns (ProtoListKeyResponse) {}
+}
+
 enum ProtoKeyType {
   UNKNOWN_KEY_TYPE = 0;
   CPF = 1;
@@ -88,4 +92,21 @@ message ProtoQueryKeyResponse {
   string clientId = 1;
   string pixId = 2;
   ProtoQueryPixKey pixKey = 3;
+}
+
+message ProtoListKeyRequest {
+  string clientId = 1;
+}
+
+message ProtoListKeyResponse {
+  message ProtoListObj {
+    string pixId = 1;
+    string clientId = 2;
+    ProtoKeyType keyType = 3;
+    string key = 4;
+    ProtoAccountType accountType = 5;
+    google.protobuf.Timestamp createdAt = 6;
+  }
+
+  repeated ProtoListObj keys = 1;
 }
